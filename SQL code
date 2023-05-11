@@ -1,0 +1,89 @@
+-----Combining all the months into one table
+--WITH yeartable AS(
+--SELECT * FROM January
+--UNION ALL
+--SELECT * FROM February
+--UNION ALL
+--SELECT * FROM March
+--UNION ALL
+--SELECT * FROM April
+--UNION ALL
+--SELECT * FROM May
+--UNION ALL
+--SELECT * FROM June
+--UNION ALL
+--SELECT * FROM July
+--UNION ALL
+--SELECT * FROM August
+--UNION ALL
+--SELECT * FROM September
+--UNION ALL
+--SELECT * FROM October
+--UNION ALL
+--SELECT * FROM November
+--UNION ALL
+--SELECT * FROM December)
+
+--------printing the whole table
+--SELECT * FROM yeartable
+--ORDER BY start_date;
+
+------ count of casual and member riders
+--SELECT member_casual, COUNT(*) as count
+--FROM yeartable
+--GROUP BY member_casual;
+
+------- count of electric, classic and docked bike
+--SELECT rideable_type, 
+--		COUNT(CASE WHEN member_casual = 'member' THEN 1 END) AS members,
+--		COUNT(CASE WHEN member_casual = 'casual' THEN 1 END) AS casual
+--FROM yeartable
+--WHERE member_casual IN ('member', 'casual')
+--GROUP BY rideable_type;
+
+------daily riders of casual and member
+--SELECT CONVERT(varchar, start_date)AS dates,
+--		COUNT(CASE WHEN member_casual = 'member' THEN 1 END) AS members,
+--		COUNT(CASE WHEN member_casual = 'casual' THEN 1 END) AS casual
+--FROM yeartable
+--WHERE member_casual IN ('member', 'casual') 
+--GROUP BY start_date;
+
+
+------weekly riders of casual and member
+--SELECT day_of_the_week,
+--       COUNT(CASE WHEN member_casual = 'member' THEN 1 END) AS members,
+--       COUNT(CASE WHEN member_casual = 'casual' THEN 1 END) AS casual
+--FROM yeartable
+--WHERE member_casual IN ('member', 'casual')
+--GROUP BY day_of_the_week
+--ORDER BY day_of_the_week;
+
+-------monthly riders of casual and member 
+--SELECT end_month,
+--       COUNT(CASE WHEN member_casual = 'member' THEN 1 END) AS members,
+--       COUNT(CASE WHEN member_casual = 'casual' THEN 1 END) AS casual
+--FROM yeartable
+--WHERE member_casual IN ('member', 'casual')
+--GROUP BY end_month
+--ORDER BY end_month;
+
+--SELECT end_month, COUNT(member_casual)
+--FROM yeartable
+--GROUP BY end_month;
+
+------average ride time
+--SELECT 
+--    MONTH(start_date) AS Month,
+--    AVG(CASE WHEN member_casual = 'member' THEN DATEDIFF(minute, started_at_timestamp, ended_at_timestamp) END) AS Member_Avg_Ride_Length,
+--    AVG(CASE WHEN member_casual = 'casual' THEN DATEDIFF(minute, started_at_timestamp, ended_at_timestamp) END) AS Casual_Avg_Ride_Length
+--FROM yeartable
+--WHERE member_casual IN ('member', 'casual')
+--GROUP BY MONTH(start_date)
+--ORDER BY MONTH(start_date);
+
+-- Count the total number of rides taken by each user type on each day of the week and hour of the day
+--SELECT member_casual, MONTH(start_date) AS months, start_time, COUNT(*) AS [Total Rides]
+--FROM yeartable
+--GROUP BY member_casual, start_date, start_time
+--ORDER BY member_casual, start_date, start_time;
