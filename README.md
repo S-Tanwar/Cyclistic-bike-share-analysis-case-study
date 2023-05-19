@@ -18,6 +18,7 @@ How do annual members and casual riders use Cyclistic bikes differently?
 3) Thursday is the busiest day.
 ![image](https://github.com/S-Tanwar/Cyclistic-bike-share-analysis-case-study/assets/95356553/8768ad4b-ad39-4ca0-a861-83238069afd1)
 
+
 4) August is the busiest month.
 ![image](https://github.com/S-Tanwar/Cyclistic-bike-share-analysis-case-study/assets/95356553/5480a268-cb70-42c2-a349-3893bb4d9a40)
 
