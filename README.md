@@ -32,3 +32,5 @@ To complete this project, I followed a structured workflow that leveraged variou
 
 ## Get Involved!
 If you're interested in learning more about the Cyclistic Bike Share Analysis case study, you can explore the project code and detailed findings in the accompanying GitHub repository. Feel free to reach out with any questions or feedback. Let's revolutionize the bike-sharing industry together!
+
+Medium Link: https://medium.com/@shivanitanwar510/case-study-how-does-a-bike-share-navigate-speedy-success-3c1e19441854
